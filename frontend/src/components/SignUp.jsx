@@ -63,7 +63,7 @@ export default function SignUp() {
                             type="button"
                           >
                             <span class="text-sm text-white tracking-wider">
-                              Sign in with Google
+                              SignUp with Google
                             </span>
                           </button>
                         </TERipple>
