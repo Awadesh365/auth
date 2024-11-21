@@ -1,118 +1,88 @@
 import React from "react";
-import { TEInput, TERipple } from "tw-elements-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function SignUp() {
-  const navigate = useNavigate();
-  const handleSignUp = () => {
-    navigate("/sign-in");
-  };
+function SignUp() {
   return (
-    <section className="h-full bg-neutral-200 dark:bg-neutral-700">
-      <div className="container h-full p-10">
-        <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
-          <div className="w-full">
-            <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
-              <div className="g-0 lg:flex lg:flex-wrap">
-                {/* <!-- Left column container--> */}
-                <div className="px-4 md:px-0 lg:w-6/12">
-                  <div className="md:mx-6 md:p-12">
-                    {/* <!--Logo--> */}
-                    <div className="text-center">
-                      <img
-                        className="mx-auto w-48"
-                        src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                        alt="logo"
-                      />
-                      <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                        We are The Lotus Team
-                      </h4>
-                    </div>
+    <div>
+      <div className="bg-sky-100 flex justify-center items-center h-screen">
+        <div className="w-1/2 h-screen hidden lg:block">
+          <img
+            src="https://img.freepik.com/fotos-premium/imagen-fondo_910766-187.jpg?w=826"
+            alt="Placeholder Image"
+            className="object-cover w-full h-full"
+          />
+        </div>
 
-                    <form>
-                      <p className="mb-4">Please register an account</p>
-                      {/* <!--Username input--> */}
-                      <TEInput
-                        type="text"
-                        label="Username"
-                        className="mb-4"
-                      ></TEInput>
-
-                      {/* <!--Password input--> */}
-                      <TEInput
-                        type="password"
-                        label="Password"
-                        className="mb-4"
-                      ></TEInput>
-
-                      {/* <!--Submit button--> */}
-                      <div className="mb-12 pb-1 pt-1 text-center">
-                        <TERipple rippleColor="light" className="w-full">
-                          <button
-                            className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-                            type="button"
-                            style={{
-                              background:
-                                "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
-                            }}
-                          >
-                            Sign up
-                          </button>
-                          <button
-                            className="bg-blue-800 mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-                            type="button"
-                          >
-                            <span class="text-sm text-white tracking-wider">
-                              SignUp with Google
-                            </span>
-                          </button>
-                        </TERipple>
-
-                        {/* <!--Forgot password link--> */}
-                        <a href="#!">Terms and conditions</a>
-                      </div>
-
-                      {/* <!--Register button--> */}
-                      <div className="flex items-center justify-between pb-6">
-                        <p className="mb-0 mr-2">Have an account?</p>
-                        <TERipple rippleColor="light">
-                          <button
-                            onClick={handleSignUp}
-                            className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-                          >
-                            Login
-                          </button>
-                        </TERipple>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-                {/* <!-- Right column container with background and description--> */}
-                <div
-                  className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
-                  style={{
-                    background:
-                      "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
-                  }}
-                >
-                  <div className="px-4 py-6 text-white md:mx-6 md:p-12">
-                    <h4 className="mb-6 text-xl font-semibold">
-                      We are more than just a company
-                    </h4>
-                    <p className="text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+          <h1 className="text-2xl font-semibold mb-4">SignUp</h1>
+          <form action="#" method="POST">
+            <div className="mb-4 bg-sky-100">
+              <label htmlFor="username" className="block text-gray-600">
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                autocomplete="off"
+              />
             </div>
+
+            <div className="mb-4 bg-sky-100">
+              <label htmlFor="username" className="block text-gray-600">
+                email
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                autocomplete="off"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="password" className="block text-gray-800">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                autocomplete="off"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-red-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
+            >
+              SignUp
+            </button>
+          </form>
+
+          <button
+            className="bg-blue-800 mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+            type="button"
+          >
+            <span class="text-sm text-white tracking-wider">
+              Sign-In with Google
+            </span>
+          </button>
+          <div>
+            Have an Account? .
+            <Link
+              className="hover:underline mt-6 text-green-500 text-center"
+              to="/sign-in"
+            >
+              Sign-In here
+            </Link>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
+
+export default SignUp;
