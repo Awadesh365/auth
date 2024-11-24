@@ -1,90 +1,71 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-function SignIn() {
+export default function SignIn() {
+  const [formData, setFormData] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setError(false);
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      setLoading(false);
+      if (data.success === false) {
+        setError(true);
+        return;
+      }
+      navigate("/");
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+    }
+  };
   return (
-    <div>
-      <div className="bg-sky-100 flex justify-center items-center h-screen">
-        <div className="w-1/2 h-screen hidden lg:block">
-          <img
-            src="https://img.freepik.com/fotos-premium/imagen-fondo_910766-187.jpg?w=826"
-            alt="Placeholder Image"
-            className="object-cover w-full h-full"
-          />
-        </div>
-
-        <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-          <h1 className="text-2xl font-semibold mb-4">Login</h1>
-          <form action="#" method="POST">
-            <div className="mb-4 bg-sky-100">
-              <label htmlFor="username" className="block text-gray-600">
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-                autocomplete="off"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-800">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-                autocomplete="off"
-              />
-            </div>
-
-            <div className="mb-4 flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                name="remember"
-                className="text-red-500"
-              />
-              <label htmlFor="remember" className="text-green-900 ml-2">
-                Remember Me
-              </label>
-            </div>
-
-            <div className="mb-6 text-blue-500">
-              <a href="#" className="hover:underline">
-                Forgot Password?
-              </a>
-            </div>
-
-            <button
-              type="submit"
-              className="bg-red-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
-            >
-              Login
-            </button>
-          </form>
-
-          <div className="mt-6 text-green-500 text-center">
-            <Link className="hover:underline" to="/sign-up">
-              Sign up Here
-            </Link>
-          </div>
-          <button
-            className="bg-blue-800 mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-            type="button"
-          >
-            <span class="text-sm text-white tracking-wider">
-              Sign-In with Google
-            </span>
-          </button>
-        </div>
+    <div className="p-3 max-w-lg mx-auto">
+      <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input
+          type="email"
+          placeholder="Email"
+          id="email"
+          className="bg-slate-100 p-3 rounded-lg"
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          className="bg-slate-100 p-3 rounded-lg"
+          onChange={handleChange}
+        />
+        <button
+          disabled={loading}
+          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+        >
+          {loading ? "Loading..." : "Sign In"}
+        </button>
+      </form>
+      <div className="flex gap-2 mt-5">
+        <p>Dont Have an account?</p>
+        <Link to="/sign-up">
+          <span className="text-blue-500">Sign up</span>
+        </Link>
       </div>
+      <p className="text-red-700 mt-5">{error && "Something went wrong!"}</p>
     </div>
   );
 }
-
-export default SignIn;
